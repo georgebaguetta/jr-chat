@@ -1,18 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./css/main.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    rel="stylesheet">
   <title>Online Chat</title>
 </head>
+
 <body>
+  <header>
+    <nav>
+      <div class="chat-name-wrapper">
+        <img class="chat-name-icon" src="./resorces/img/logo.svg" alt="">
+        <span class="chat-name">Online Chat</span>
+      </div>
+      <div class="menu">
+        <img src="./resorces/img/white-button-icon.svg" alt="">
+        <!-- <ul>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul> -->
+      </div>
+    </nav>
+  </header>
+  <main class="messages">
+    <time class="start-conversation-time" datetime="">1 May 2025</time>
+    <div class="conversation-container">
+      <div class="message message-received">
+        <div class="message-header-wrapper">
+          <span class="message-name">JUNIOR</span>
+          <div class="message-options">
+            <img src="./resorces/img/button-icon.svg" alt="">
+          </div>
+        </div>
+        <div class="message-body">
+          <p>Hey, quick question - got any SQL experience?</p>
+        </div>
+        <div class="message-footer">
+          <time class="send-time" datetime="">13:40</time>
+        </div>
+      </div>
 
-<main class="messages">
+      <div class="message message-send">
+        <div class="message-header-wrapper">
+          <span class="message-name">SENIOR</span>
+          <div class="message-options">
+            <img src="./resorces/img/button-icon.svg" alt="">
+          </div>
+        </div>
+        <div class="message-body">
+          <p>Yes, I’ve worked with “ess-queue-ell” for about a year.
+            <br>
+            You know, that’s actually a common topic in tech interviews. Both “ess-queue-ell” and “sequel” are correct.
+            <br>
+            Depends where you are:
+            • In North America, especially in Silicon Valley, “sequel” is super common
+            • Europeans typically say “ess-queue-ell”
+          </p>
+        </div>
+        <div class="message-footer">
+          <time class="send-time" datetime="">13:40</time>
+        </div>
+      </div>
 
-</main>
+      <div class="message message-received">
+        <div class="message-header-wrapper">
+          <span class="message-name">JUNIOR</span>
+          <div class="message-options">
+            <img src="./resorces/img/button-icon.svg" alt="">
+          </div>
+        </div>
+        <div class="message-body">
+          <p>Hey, quick question - got any SQL experience?</p>
+        </div>
+        <div class="message-footer">
+          <time class="send-time" datetime="">13:40</time>
+        </div>
+      </div> 
 
-<script src="./js/index.js"></script>
+      
+      
+    </div>
+  </main>
+  <div class="new-message-wrapper">
+    <form action="">
+      <input type="text" class="new-message" placeholder="Type a message...">
+      <button><img src="./resorces/img/send.png" alt=""></button>
+    </form>
+  </div>
 
+  <script src="./js/index.js"></script>
+  <div class="ellipse1"></div>
+  <div class="ellipse2"></div>
 </body>
+
 </html>
