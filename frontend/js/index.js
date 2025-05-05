@@ -35,4 +35,23 @@
   }
 
   initChat();
+
+  const dotButtons = document.querySelectorAll(".message-control");
+  const menuButton = document.querySelector(".menu-button");
+  
+  dotButtons.forEach(button => {
+    button.addEventListener('click', function () {
+      const parent = button.closest('.message');
+      const options = parent.querySelector('.options-wrapper');
+      options.classList.toggle('active');
+    });
+  });
+
+  menuButton.addEventListener("click", function () {
+    const options = document.querySelector(".menu-control")
+    options.classList.toggle("active");
+  });
+
+  
+
 }

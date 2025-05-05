@@ -20,14 +20,14 @@ server.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "../../frontend/index.html"));
 });
 
-// server.get("/messages", function(req: Request, res: Response) {
-//   res.status(200).json([...messages, {
-//     "id": messages.length,
-//     "username": "Bot 🤖",
-//     "text": "Welcome to chat",
-//     "timestamp": new Date().toISOString(),
-//   }]);
-// });
+server.get("/messages", function(req: Request, res: Response) {
+  res.status(200).json([...messages, {
+    "id": messages.length,
+    "username": "Bot 🤖",
+    "text": "Welcome to chat",
+    "timestamp": new Date().toISOString(),
+  }]);
+});
 
 server.listen(PORT, function() {
   console.log(`[server]: Server is running at http://localhost:${PORT}`);

@@ -14,19 +14,31 @@
 </head>
 
 <body>
+  <div class="login-overlay">
+    <div class="login-logo">
+      <img class="logo-icon" src="./resorces/img/logo.svg" alt="">
+      <div class="logo-text">Online Chat</div>
+    </div>
+    <form class="login-form">
+      <label for="Username">Username</label>
+      <input type="text" name="username" id="username" placeholder="Value">
+      <button class="join">Join</button>
+    </form>
+    <div class="ellipse3"></div>
+    <div class="ellipse4"></div>
+  </div>
   <header>
-    <nav>
-      <div class="chat-name-wrapper">
-        <img class="chat-name-icon" src="./resorces/img/logo.svg" alt="">
-        <span class="chat-name">Online Chat</span>
+    <nav class="navbar">
+      <div class="logo">
+        <img class="logo-icon" src="./resorces/img/logo.svg" alt="">
+        <span class="logo-text">Online Chat</span>
       </div>
-      <div class="menu">
+      <div class="menu-button">
         <img src="./resorces/img/white-button-icon.svg" alt="">
-        <!-- <ul>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul> -->
+        <ul class="menu-control">
+          <li class="edit-name">Edit name</li>
+          <li class="logout">Logout</li>
+        </ul>
       </div>
     </nav>
   </header>
@@ -36,11 +48,20 @@
       <div class="message message-received">
         <div class="message-header-wrapper">
           <span class="message-name">JUNIOR</span>
-          <div class="message-options">
+          <button class="message-control">
             <img src="./resorces/img/button-icon.svg" alt="">
-          </div>
+            <div class="options-wrapper">
+              <ul class="options">
+                <li>View</li>
+                <li>Edit</li>
+                <li>Delete</li>
+              </ul>
+              <hr>
+              <div>Item</div>
+            </div>
+          </и>
         </div>
-        <div class="message-body">
+        <div class="message-text">
           <p>Hey, quick question - got any SQL experience?</p>
         </div>
         <div class="message-footer">
@@ -51,11 +72,20 @@
       <div class="message message-send">
         <div class="message-header-wrapper">
           <span class="message-name">SENIOR</span>
-          <div class="message-options">
+          <div class="message-control">
             <img src="./resorces/img/button-icon.svg" alt="">
+            <div class="options-wrapper">
+              <ul class="options">
+                <li>View</li>
+                <li>Edit</li>
+                <li>Delete</li>
+              </ul>
+              <hr>
+              <div class="">Item</div>
+            </div>
           </div>
         </div>
-        <div class="message-body">
+        <div class="message-text">
           <p>Yes, I’ve worked with “ess-queue-ell” for about a year.
             <br>
             You know, that’s actually a common topic in tech interviews. Both “ess-queue-ell” and “sequel” are correct.
@@ -73,11 +103,20 @@
       <div class="message message-received">
         <div class="message-header-wrapper">
           <span class="message-name">JUNIOR</span>
-          <div class="message-options">
+          <div class="message-control">
             <img src="./resorces/img/button-icon.svg" alt="">
+            <div class="options-wrapper">
+              <ul class="options">
+                <li>View</li>
+                <li>Edit</li>
+                <li>Delete</li>
+              </ul>
+              <hr>
+              <div class="">Item</div>
+            </div>
           </div>
         </div>
-        <div class="message-body">
+        <div class="message-text">
           <p>Hey, quick question - got any SQL experience?</p>
         </div>
         <div class="message-footer">
