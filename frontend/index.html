@@ -14,7 +14,7 @@
 </head>
 
 <body>
-  <div class="login-overlay">
+  <!-- <div class="login-overlay">
     <div class="login-logo">
       <img class="logo-icon" src="./resorces/img/logo.svg" alt="">
       <div class="logo-text">Online Chat</div>
@@ -26,7 +26,7 @@
     </form>
     <div class="ellipse3"></div>
     <div class="ellipse4"></div>
-  </div>
+  </div> -->
   <header>
     <nav class="navbar">
       <div class="logo">
@@ -59,7 +59,7 @@
               <hr>
               <div>Item</div>
             </div>
-          </и>
+            </и>
         </div>
         <div class="message-text">
           <p>Hey, quick question - got any SQL experience?</p>
@@ -122,15 +122,14 @@
         <div class="message-footer">
           <time class="send-time" datetime="">13:40</time>
         </div>
-      </div> 
+      </div>
 
-      
-      
     </div>
   </main>
   <div class="new-message-wrapper">
-    <form action="">
-      <input type="text" class="new-message" placeholder="Type a message...">
+    <form method="POST" action="">
+      <input type="hidden" name="username" value="guest001" id="">
+      <input type="text" name="text" class="new-message" placeholder="Type a message...">
       <button><img src="./resorces/img/send.png" alt=""></button>
     </form>
   </div>

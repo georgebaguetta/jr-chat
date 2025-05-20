@@ -2,6 +2,7 @@
   const container = document.querySelector(".messages");
 
   function renderMessages(messages) {
+    container.innerHTML = "";
     for (const message of messages) {
       const messageElement = document.createElement("article");
       messageElement.className = "message";
@@ -17,7 +18,7 @@
     }
   }
 
-  function initChat() {
+  function getMessages() {
     fetch("http://localhost:4000/messages", {
       method: "GET",
     })
@@ -34,11 +35,59 @@
       });
   }
 
+  function initForm() {
+    const formContainer = document.querySelector("form");
+
+    const formTextField = formContainer.querySelector('input[name="text"]');
+    const usernameField = formContainer.querySelector('input[name="username"]');
+    const formSubmitButton = formContainer.querySelector('input[name="username"]');
+
+    formContainer.onsubmit = function (evt) {
+      evt.preventDefault();
+
+      const messageData = {
+        username: usernameField.value,
+        text: formTextField.value,
+      };
+
+      formTextField.disabled = true;
+      formSubmitButton.disabled = true;
+      formSubmitButton.textContent = "Сообщение отправляется...";
+    
+      console.log("Sending message:", messageData);
+      fetch("http://localhost:4000/messages", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(messageData),
+      })
+        .then(function (newMessageResponse) {
+          console.log(newMessageResponse.status);
+
+          if (newMessageResponse.status !== 200) {
+            //
+          }
+
+          formTextField.disabled = false;
+          formTextField.value = "";
+          formSubmitButton.disabled = false;
+          formSubmitButton.textContent = "Отправить";
+          getMessages();
+        });
+    }
+  }
+
+  function initChat() {
+    getMessages();
+    initForm();
+  }
+
   initChat();
 
   const dotButtons = document.querySelectorAll(".message-control");
   const menuButton = document.querySelector(".menu-button");
-  
+
   dotButtons.forEach(button => {
     button.addEventListener('click', function () {
       const parent = button.closest('.message');
@@ -52,6 +101,6 @@
     options.classList.toggle("active");
   });
 
-  
+
 
 }
