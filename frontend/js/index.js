@@ -79,6 +79,9 @@
   }
 
   function initChat() {
+
+    setInterval(getMessages, 3000);
+
     getMessages();
     initForm();
   }
