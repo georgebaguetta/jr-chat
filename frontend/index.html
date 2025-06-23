@@ -5,138 +5,44 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./css/main.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-    rel="stylesheet">
   <title>Online Chat</title>
 </head>
 
 <body>
-  <!-- <div class="login-overlay">
-    <div class="login-logo">
-      <img class="logo-icon" src="./resorces/img/logo.svg" alt="">
-      <div class="logo-text">Online Chat</div>
-    </div>
-    <form class="login-form">
-      <label for="Username">Username</label>
-      <input type="text" name="username" id="username" placeholder="Value">
-      <button class="join">Join</button>
-    </form>
-    <div class="ellipse3"></div>
-    <div class="ellipse4"></div>
-  </div> -->
+
   <header>
     <nav class="navbar">
-      <div class="logo">
-        <img class="logo-icon" src="./resorces/img/logo.svg" alt="">
-        <span class="logo-text">Online Chat</span>
-      </div>
-      <div class="menu-button">
-        <img src="./resorces/img/white-button-icon.svg" alt="">
-        <ul class="menu-control">
-          <li class="edit-name">Edit name</li>
-          <li class="logout">Logout</li>
-        </ul>
-      </div>
+      <img class="logo-icon" src="./resorces/img/logo.svg" alt="logo">
+      <h1 class="logo-text">Online Chat</h1>
     </nav>
+    <button id="logout-button" class="logout-button">Logout</button>
   </header>
-  <main class="messages">
-    <time class="start-conversation-time" datetime="">1 May 2025</time>
-    <div class="conversation-container">
-      <div class="message message-received">
-        <div class="message-header-wrapper">
-          <span class="message-name">JUNIOR</span>
-          <button class="message-control">
-            <img src="./resorces/img/button-icon.svg" alt="">
-            <div class="options-wrapper">
-              <ul class="options">
-                <li>View</li>
-                <li>Edit</li>
-                <li>Delete</li>
-              </ul>
-              <hr>
-              <div>Item</div>
-            </div>
-            </и>
-        </div>
-        <div class="message-text">
-          <p>Hey, quick question - got any SQL experience?</p>
-        </div>
-        <div class="message-footer">
-          <time class="send-time" datetime="">13:40</time>
-        </div>
-      </div>
 
-      <div class="message message-send">
-        <div class="message-header-wrapper">
-          <span class="message-name">SENIOR</span>
-          <div class="message-control">
-            <img src="./resorces/img/button-icon.svg" alt="">
-            <div class="options-wrapper">
-              <ul class="options">
-                <li>View</li>
-                <li>Edit</li>
-                <li>Delete</li>
-              </ul>
-              <hr>
-              <div class="">Item</div>
-            </div>
-          </div>
-        </div>
-        <div class="message-text">
-          <p>Yes, I’ve worked with “ess-queue-ell” for about a year.
-            <br>
-            You know, that’s actually a common topic in tech interviews. Both “ess-queue-ell” and “sequel” are correct.
-            <br>
-            Depends where you are:
-            • In North America, especially in Silicon Valley, “sequel” is super common
-            • Europeans typically say “ess-queue-ell”
-          </p>
-        </div>
-        <div class="message-footer">
-          <time class="send-time" datetime="">13:40</time>
-        </div>
-      </div>
-
-      <div class="message message-received">
-        <div class="message-header-wrapper">
-          <span class="message-name">JUNIOR</span>
-          <div class="message-control">
-            <img src="./resorces/img/button-icon.svg" alt="">
-            <div class="options-wrapper">
-              <ul class="options">
-                <li>View</li>
-                <li>Edit</li>
-                <li>Delete</li>
-              </ul>
-              <hr>
-              <div class="">Item</div>
-            </div>
-          </div>
-        </div>
-        <div class="message-text">
-          <p>Hey, quick question - got any SQL experience?</p>
-        </div>
-        <div class="message-footer">
-          <time class="send-time" datetime="">13:40</time>
-        </div>
-      </div>
-
-    </div>
-  </main>
-  <div class="new-message-wrapper">
-    <form method="POST" action="">
-      <input type="hidden" name="username" value="guest001" id="">
-      <input type="text" name="text" class="new-message" placeholder="Type a message...">
-      <button><img src="./resorces/img/send.png" alt=""></button>
+  <dialog class="username">
+    <form method="POST">
+      <fieldset>
+        <label>Username</label>
+        <input required type="text" name="username" placeholder="username" autocapitalize="off" autocomplete="off" />
+      </fieldset>
+      <button type="submit">Join</button>
     </form>
-  </div>
+  </dialog>
 
-  <script src="./js/index.js"></script>
+  <main>
+    <section class="messages"></section>
+
+    <section class="form" id="message-form">
+      <form method="POST" class="message-form" action="/">
+        <input type="hidden" name="username" value="guest001" />
+        <textarea name="text" placeholder="Type a message..."></textarea>
+        <button><img src="./resorces/img/send.png" alt=""></button>
+      </form>
+    </section>
+  </main>
   <div class="ellipse1"></div>
   <div class="ellipse2"></div>
+  <script src="./js/index.js"></script>
+
 </body>
 
 </html>
