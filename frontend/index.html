@@ -1,18 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./css/main.css">
   <title>Online Chat</title>
 </head>
+
 <body>
 
-<main class="messages">
+  <header>
+    <nav class="navbar">
+      <img class="logo-icon" src="./resorces/img/logo.svg" alt="logo">
+      <h1 class="logo-text">Online Chat</h1>
+    </nav>
+    <button id="logout-button" class="logout-button">Logout</button>
+  </header>
 
-</main>
+  <dialog class="username">
+    <form method="POST">
+      <fieldset>
+        <label>Username</label>
+        <input required type="text" name="username" placeholder="username" autocapitalize="off" autocomplete="off" />
+      </fieldset>
+      <button type="submit">Join</button>
+    </form>
+  </dialog>
 
-<script src="./js/index.js"></script>
+  <main>
+    <section class="messages"></section>
+
+    <section class="form" id="message-form">
+      <form method="POST" class="message-form" action="/">
+        <input type="hidden" name="username" value="guest001" />
+        <textarea name="text" placeholder="Type a message..."></textarea>
+        <button><img src="./resorces/img/send.png" alt=""></button>
+      </form>
+    </section>
+  </main>
+  <div class="ellipse1"></div>
+  <div class="ellipse2"></div>
+  <script src="./js/index.js"></script>
 
 </body>
+
 </html>
