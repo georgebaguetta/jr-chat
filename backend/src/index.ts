@@ -1,7 +1,8 @@
 import express, { Request, Response } from "express";
-import cors from "cors";
+import cors from "cors"; //CORS нужен, чтобы к API можно было обращаться с других доменов (например, с фронтенда)
 import path from "path";
 
+// Тип сообщения, которое будет храниться
 type Message = {
   "id": number,
   "username": string,
@@ -9,10 +10,10 @@ type Message = {
   "timestamp": string,
 };
 
-const server = express();
-const PORT = 4000;
+const server = express(); // Создаём экземпляр сервера
+const PORT = 4000;        // Порт, на котором будет запущен сервер
 
-const messages:Message[] = [];
+const messages: Message[] = []; // Хранилище сообщений в оперативной памяти (не БД)
 
 function* infiniteSequence() {
   let i = 0;
@@ -23,16 +24,20 @@ function* infiniteSequence() {
 
 const idIterator = infiniteSequence();
 
-server.use(cors());
-server.use(express.json());
+// Подключаем middleware
+server.use(cors()); // Разрешаем CORS
+server.use(express.json()); // Автоматический парсинг JSON в теле запроса
 
+// Получение всех сообщений (GET /messages)
 server.get("/messages", function(req: Request, res: Response) {
   res.status(200).json([...messages]);
 });
 
+// Создание нового сообщения (POST /messages)
 server.post("/messages", function(req: Request, res: Response)  {
   const { username, text } = req.body;
 
+  // Валидация username
   if (typeof username !=="string") {
     res.status(400).send({
       message: "Invalid username",
@@ -57,7 +62,7 @@ server.post("/messages", function(req: Request, res: Response)  {
     return;
   }
 
-
+  // Валидация текста
   if (typeof text !=="string") {
     res.status(400).send({
       message: "Invalid text message",
@@ -82,6 +87,7 @@ server.post("/messages", function(req: Request, res: Response)  {
     return;
   }
 
+  // Формируем новое сообщение
   const newMessage = {
     id: idIterator.next().value as number,
     text,
@@ -89,10 +95,12 @@ server.post("/messages", function(req: Request, res: Response)  {
     username,
   }
 
+  // Сохраняем его в массив и отправляем клиенту
   messages.push(newMessage);
   res.status(201).send(newMessage);
 });
 
+// Запускаем сервер
 server.listen(PORT, function() {
   console.log(`[server]: Server is running at http://localhost:${PORT}`);
 });
