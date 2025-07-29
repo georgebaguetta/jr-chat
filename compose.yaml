@@ -19,6 +19,7 @@ services:
       - "4000:4000"
     volumes:
       - shared:/shared
+    
 
   database:
     image: postgres
@@ -33,3 +34,4 @@ services:
 volumes:
   shared:
   db-data:
+

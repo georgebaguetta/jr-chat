@@ -1,6 +1,9 @@
 import express, { Request, Response } from "express";
 import cors from "cors"; //CORS нужен, чтобы к API можно было обращаться с других доменов (например, с фронтенда)
 import path from "path";
+import { readFile, writeFile } from 'fs/promises';
+
+
 
 // Тип сообщения, которое будет храниться
 type Message = {
@@ -13,7 +16,11 @@ type Message = {
 const server = express(); // Создаём экземпляр сервера
 const PORT = 4000;        // Порт, на котором будет запущен сервер
 
-const messages: Message[] = []; // Хранилище сообщений в оперативной памяти (не БД)
+const messages: Message[] = [];
+
+async function saveMessages() {
+    await writeFile('messages.json', JSON.stringify(messages, null, 2), 'utf-8');
+}
 
 function* infiniteSequence() {
   let i = 0;
@@ -29,9 +36,12 @@ server.use(cors()); // Разрешаем CORS
 server.use(express.json()); // Автоматический парсинг JSON в теле запроса
 
 // Получение всех сообщений (GET /messages)
+
 server.get("/messages", function(req: Request, res: Response) {
   res.status(200).json([...messages]);
 });
+
+
 
 // Создание нового сообщения (POST /messages)
 server.post("/messages", function(req: Request, res: Response)  {
@@ -98,9 +108,30 @@ server.post("/messages", function(req: Request, res: Response)  {
   // Сохраняем его в массив и отправляем клиенту
   messages.push(newMessage);
   res.status(201).send(newMessage);
+  saveMessages();  
 });
 
+async function loadMessages() {
+  try {
+    const savedMessages = readFile('messages.json', 'utf-8');
+    const loadedMessages = JSON.parse(await savedMessages);
+    if(Array.isArray(loadedMessages)) {
+      messages.push(...loadedMessages);
+    }
+  }
+  catch(err) {
+    console.log(err);
+  }
+}
+
+async function startServer() {
+  await loadMessages();
+  server.listen(PORT, function() {
+    console.log(`[server]: Server is running at http://localhost:${PORT}`);
+  });
+}
+
+startServer();
+
 // Запускаем сервер
-server.listen(PORT, function() {
-  console.log(`[server]: Server is running at http://localhost:${PORT}`);
-});
+
