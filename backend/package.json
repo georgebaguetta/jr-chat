@@ -5,15 +5,17 @@
   "main": "index.js",
   "scripts": {
     "build": "npx tsc",
-    "start": "npx tsc && node dist/index.js",
-    "dev": "npx tsx watch src/index.ts",
+    "start": "npx tsc && dotenvx run -f .env -- node dist/index.js",
+    "dev": "dotenvx run -f .env -- npx tsx watch src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@dotenvx/dotenvx": "^1.48.4",
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.3",
+    "@types/pg": "^8.15.5",
     "tsx": "^4.19.3",
     "typescript": "^5.8.3"
   },
