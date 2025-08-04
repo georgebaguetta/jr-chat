@@ -13,7 +13,7 @@ type Message = {
   timestamp: string;
 };
 
-const client = new Client();
+const pgClient = new Client();
 const server = express(); // Создаём экземпляр сервера
 
 const messages: Message[] = []; // Хранилище сообщений в оперативной памяти (не БД)
@@ -110,7 +110,7 @@ async function initServer() {
     res.status(201).send(newMessage);
   });
 
-  await client.connect();
+  await pgClient.connect();
 
   // Запускаем сервер
   server.listen(PORT, function () {
@@ -119,7 +119,7 @@ async function initServer() {
 }
 
 process.on("exit", async function () {
-  await client.end();
+  await pgClient.end();
 });
 
 initServer();
